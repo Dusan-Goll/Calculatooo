@@ -1,0 +1,82 @@
+:root {
+    --maxiH: 465px;
+    --maxiW: 310px;
+    --main-height: 120vw;
+    --main-width: 0.8;
+    --theGrid-height: 0.9;
+    --display-height: 0.2;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #5D6D7E;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    height: var(--main-height);
+    width: calc(100% * var(--main-width));
+    max-height: var(--maxiH);
+    max-width: var(--maxiW);
+    margin: 0;
+
+    background-color: #D5DBDB;
+
+    border: solid 8px #F1C40F;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px 5px #F1C40F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* nastylovat tlacitka a display, ... grid asi */
+
+#theGrid {
+    height: calc(100% * var(--theGrid-height));
+    width: 90%;
+    margin: 0px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    row-gap: 4%;
+    grid-template-areas:
+        "display display display display";
+}
+
+#display {
+    grid-area: display;
+    height: calc(100% * var(--display-height));
+    background-color: #17202A;
+    display: flex;
+    align-items: center;
+}
+
+span {
+    padding-left: 4%;
+    color: #ECF0F1;
+    font-size: calc(
+        var(--main-height) *
+        var(--theGrid-height) *
+        var(--display-height) *
+        0.8
+        );
+}
+
+@media screen and (min-width: 372px) { /* (--maxiW * 1.2) */
+    span {
+        font-size: calc(
+            var(--maxiH) *
+            var(--theGrid-height) *
+            var(--display-height) *
+            0.8
+            );
+    }
+}   /* why it doesn't work?
