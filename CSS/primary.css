@@ -5,12 +5,17 @@
     --main-width: 0.8;
     --theGrid-height: 0.9;
     --display-height: 0.2;
+    --color-deepBlue: #5D6D7E;
+    --color-whitey: #ECF0F1;
+    --color-lightPink: #F6DDCC;
+    --color-blackBlue: #283747;
+    --color-black: #000000;
 }
 
 body {
     height: 100vh;
     margin: 0;
-    background-color: #5D6D7E;
+    background-color: var(--color-deepBlue);
 
     display: flex;
     justify-content: center;
@@ -45,16 +50,22 @@ main {
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: 1.5fr repeat(5, 1fr);
+    column-gap: 4%;
     row-gap: 4%;
     grid-template-areas:
-        "display display display display";
+        "display display display display"
+        "additio subtrac multipl divisio"
+        "sevennn eighttt nineeee equalat"
+        "fourrrr fiveeee sixxxxx equalat"
+        "oneeeee twooooo threeee equalat"
+        "zeroooo floatin ccccccc equalat";
 }
 
 #display {
     grid-area: display;
-    height: calc(100% * var(--display-height));
-    background-color: #17202A;
+    min-height: calc(100% * var(--display-height));
+    background-color: var(--color-black);
     display: flex;
     align-items: center;
 }
@@ -72,6 +83,7 @@ span {
 
 @media screen and (min-width: 372px) { /* (--maxiW * 1.2) */
     span {
+        font-family: monospace;
         font-size: calc(
             var(--maxiH) *
             var(--theGrid-height) *
@@ -79,4 +91,117 @@ span {
             0.8
             );
     }
-}   /* why it doesn't work?
+}
+
+button {
+    border: none;
+}
+
+/* TODO: add hover, active properties - cursor, bcgcolor, fontsize larger */
+
+/** classes of buttons **/
+.Operations, .Equalation, .Numbers {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: calc(
+        var(--main-height) *
+        var(--theGrid-height) *
+        var(--display-height) *
+        0.3
+        );
+}
+
+@media screen and (min-width: 372px) {
+    .Operations, .Equalation, .Numbers {
+        font-size: calc(
+            var(--maxiH) *
+            var(--theGrid-height) *
+            var(--display-height) *
+            0.3
+            );
+    }
+}
+
+.Operations {
+    background-color: var(--color-deepBlue);
+    color: var(--color-whitey);
+}
+
+.Equalation {
+    background-color: var(--color-blackBlue);
+    color: var(--color-whitey);
+}
+
+.Numbers {
+    background-color: var(--color-lightPink);
+}
+
+
+/** each button **/
+#Addition {
+    grid-area: additio;
+}
+
+#Subtraction {
+    grid-area: subtrac;
+}
+
+#Multiplication {
+    grid-area: multipl;
+}
+
+#Division {
+    grid-area: divisio;
+}
+
+#Equal {
+    grid-area: equalat;
+}
+
+#Zero {
+    grid-area: zeroooo;
+}
+
+#One {
+    grid-area: oneeeee;
+}
+
+#Two {
+    grid-area: twooooo;
+}
+
+#Three {
+    grid-area: threeee;
+}
+
+#Four {
+    grid-area: fourrrr;
+}
+
+#Five {
+    grid-area: fiveeee;
+}
+
+#Six {
+    grid-area: sixxxxx;
+}
+
+#Seven {
+    grid-area: sevennn;
+}
+
+#Eight {
+    grid-area: eighttt;
+}
+
+#Nine {
+    grid-area: nineeee;
+}
+
+#Floating {
+    grid-area: floatin;
+}
+
+#C {
+    grid-area: ccccccc;
+}
