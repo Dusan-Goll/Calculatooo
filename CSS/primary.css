@@ -5,11 +5,25 @@
     --main-width: 0.8;
     --theGrid-height: 0.9;
     --display-height: 0.2;
-    --color-deepBlue: #5D6D7E;
+
+    --color-golden: #B7950B;
+    --color-yellowa: #F1C40F;
     --color-whitey: #ECF0F1;
-    --color-lightPink: #F6DDCC;
+    --color-paleBlue: #A6ACAF;
+    --color-deepBlue: #5D6D7E;
     --color-blackBlue: #283747;
     --color-black: #000000;
+
+    --fontHouse-mono: Courier, Consolas, monospace;
+
+    --fontRatio-flexi:
+        var(--main-height) *
+        var(--theGrid-height) *
+        var(--display-height);
+    --fontRatio-fixed:
+        var(--maxiH) *
+        var(--theGrid-height) *
+        var(--display-height);
 }
 
 body {
@@ -31,10 +45,10 @@ main {
 
     background-color: #D5DBDB;
 
-    border: solid 8px #F1C40F;
+    border: solid 8px var(--color-yellowa);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 15px 5px #F1C40F;
+    box-shadow: 0 0 15px 5px var(--color-yellowa);
 
     display: flex;
     justify-content: center;
@@ -59,7 +73,7 @@ main {
         "sevennn eighttt nineeee equalat"
         "fourrrr fiveeee sixxxxx equalat"
         "oneeeee twooooo threeee equalat"
-        "zeroooo floatin ccccccc equalat";
+        "zeroooo floatin ccccccc eraseee";
 }
 
 #display {
@@ -73,23 +87,13 @@ main {
 span {
     padding-left: 4%;
     color: #ECF0F1;
-    font-size: calc(
-        var(--main-height) *
-        var(--theGrid-height) *
-        var(--display-height) *
-        0.8
-        );
+    font-family: var(--fontHouse-mono);
+    font-size: calc(var(--fontRatio-flexi) * 0.8);
 }
 
 @media screen and (min-width: 372px) { /* (--maxiW * 1.2) */
     span {
-        font-family: monospace;
-        font-size: calc(
-            var(--maxiH) *
-            var(--theGrid-height) *
-            var(--display-height) *
-            0.8
-            );
+        font-size: calc(var(--fontRatio-fixed) * 0.8);
     }
 }
 
@@ -97,28 +101,29 @@ button {
     border: none;
 }
 
-/* TODO: add hover, active properties - cursor, bcgcolor, fontsize larger */
 
-/** classes of buttons **/
+/** CLASSES OF BUTTONS **/
 .Operations, .Equalation, .Numbers {
-    font-family: monospace;
+    font-family: var(--fontHouse-mono);
     font-weight: bold;
-    font-size: calc(
-        var(--main-height) *
-        var(--theGrid-height) *
-        var(--display-height) *
-        0.3
-        );
+    font-size: calc(var(--fontRatio-flexi) * 0.3);
+}
+    
+.Operations:hover, .Equalation:hover, .Numbers:hover,
+.Operations:active, .Equalation:active, .Numbers:active {
+    background-color: var(--color-golden);
+    cursor: pointer;
+    font-size: calc(var(--fontRatio-flexi) * 0.45);
 }
 
 @media screen and (min-width: 372px) {
     .Operations, .Equalation, .Numbers {
-        font-size: calc(
-            var(--maxiH) *
-            var(--theGrid-height) *
-            var(--display-height) *
-            0.3
-            );
+        font-size: calc(var(--fontRatio-fixed) * 0.3);
+    }
+
+    .Operations:hover, .Equalation:hover, .Numbers:hover,
+    .Operations:active, .Equalation:active, .Numbers:active {
+        font-size: calc(var(--fontRatio-fixed) * 0.45);
     }
 }
 
@@ -133,11 +138,11 @@ button {
 }
 
 .Numbers {
-    background-color: var(--color-lightPink);
+    background-color: var(--color-paleBlue);
 }
 
 
-/** each button **/
+/** EACH BUTTON **/
 #Addition {
     grid-area: additio;
 }
@@ -204,4 +209,29 @@ button {
 
 #C {
     grid-area: ccccccc;
+}
+
+#Erase {
+    grid-area: eraseee;
+    font-size: calc(var(--fontRatio-flexi) * 0.2);
+}
+
+#Erase:hover, #Erase:active {
+    font-size: calc(var(--fontRatio-flexi) * 0.35);
+}
+
+@media screen and (min-width: 372px) {
+    #Erase {
+        font-size: calc(var(--fontRatio-fixed) * 0.2);
+    }
+
+    #Erase:hover, #Erase:active {
+        font-size: calc(var(--fontRatio-fixed) * 0.35);
+    }
+}
+
+@media screen and (max-width: 200px) {
+    #Erase:hover, #Erase:active {
+        font-size: calc(var(--fontRatio-flexi) * 0.25);
+    }
 }
