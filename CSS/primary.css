@@ -5,6 +5,7 @@
     --main-width: 0.8;
     --theGrid-height: 0.9;
     --display-height: 0.2;
+    --input-height: 0.5;
 
     --color-golden: #B7950B;
     --color-yellowa: #F1C40F;
@@ -55,8 +56,6 @@ main {
     align-items: center;
 }
 
-/* nastylovat tlacitka a display, ... grid asi */
-
 #theGrid {
     height: calc(100% * var(--theGrid-height));
     width: 90%;
@@ -73,36 +72,69 @@ main {
         "sevennn eighttt nineeee equalat"
         "fourrrr fiveeee sixxxxx equalat"
         "oneeeee twooooo threeee equalat"
-        "zeroooo floatin ccccccc eraseee";
+        "zeroooo floatin clearrr eraseee";
 }
+
+/** BLACK DISPLAY **/
 
 #display {
     grid-area: display;
     min-height: calc(100% * var(--display-height));
     background-color: var(--color-black);
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-span {
-    padding-left: 4%;
+input, output {
+    background-color: inherit;
+    height: calc(100% * var(--input-height));
+    width: 98%;
+    padding: 0;
+    padding-right: 2%;
+    border: none;
+    text-align: right;
+
     color: #ECF0F1;
     font-family: var(--fontHouse-mono);
-    font-size: calc(var(--fontRatio-flexi) * 0.8);
+    font-size:
+        calc(
+            var(--fontRatio-flexi) *
+            var(--input-height) *
+            0.8);
+}
+
+input:focus {
+    outline: none;
 }
 
 @media screen and (min-width: 372px) { /* (--maxiW * 1.2) */
-    span {
-        font-size: calc(var(--fontRatio-fixed) * 0.8);
+    input, output {
+        font-size:
+            calc(
+                var(--fontRatio-fixed) *
+                var(--input-height) *
+                0.8);
     }
 }
+
+/* TODO -> musi byt moznost scrollovat horizontalne
+        -> mozna to chce pouzit <input> a <output> namisto spanu*/
+input {
+    overflow: auto;
+}
+
+output {
+    font-weight: bold;
+}
+
+
+/** CLASSES OF BUTTONS **/
 
 button {
     border: none;
 }
 
-
-/** CLASSES OF BUTTONS **/
 .Operations, .Equalation, .Numbers {
     font-family: var(--fontHouse-mono);
     font-weight: bold;
@@ -207,8 +239,8 @@ button {
     grid-area: floatin;
 }
 
-#C {
-    grid-area: ccccccc;
+#Clear {
+    grid-area: clearrr;
 }
 
 #Erase {

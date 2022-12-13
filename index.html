@@ -13,16 +13,18 @@
   <body>
     <main>
       <div id="theGrid">
-        <div id="display">
-          <span>0</span>
-        </div>
+        <!-- <form id="display" oninput="outpt.value=compute(inpt.value)"> -->
+        <form id="display" oninput="outpt.value=inpt.value">
+          <input type="text" name="inpt" value="(56+97)*63-12000.78">
+          <output for="inpt" name="outpt"> 0 </output>
+        </form>
 
         <button class="Operations" id="Addition"> + </button>
         <button class="Operations" id="Subtraction"> - </button>
         <button class="Operations" id="Multiplication"> &times; </button>
         <button class="Operations" id="Division"> &divide; </button>
         <button class="Operations" id="Floating"> . </button>
-        <button class="Operations" id="C"> C </button>
+        <button class="Operations" id="Clear"> C </button>
         <button class="Operations" id="Erase"> &#9003; </button>
 
         <button class="Equalation" id="Equal"> = </button>
@@ -37,10 +39,9 @@
         <button class="Numbers" id="Seven"> 7 </button>
         <button class="Numbers" id="Eight"> 8 </button>
         <button class="Numbers" id="Nine"> 9 </button>
-
-
-        <!-- nasazet sem tlacitka (buttons) a display element -->
       </div>
     </main>
+
+    <script src="./computer.js"></script>
   </body>
 </html>
