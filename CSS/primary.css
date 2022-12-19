@@ -104,6 +104,15 @@ input, output {
             0.8);
 }
 
+input {
+    overflow: hidden
+}
+
+output {
+    font-weight: bold;
+    overflow: hidden;
+}
+
 input:focus {
     outline: none;
 }
@@ -118,16 +127,6 @@ input:focus {
     }
 }
 
-/* TODO -> musi byt moznost scrollovat horizontalne
-        -> mozna to chce pouzit <input> a <output> namisto spanu*/
-input {
-    overflow: auto;
-}
-
-output {
-    font-weight: bold;
-}
-
 
 /** CLASSES OF BUTTONS **/
 
@@ -135,37 +134,32 @@ button {
     border: none;
 }
 
-.Operations, .Equalation, .Numbers {
+.Operations, .Numbers, .Actions {
     font-family: var(--fontHouse-mono);
     font-weight: bold;
     font-size: calc(var(--fontRatio-flexi) * 0.3);
 }
     
-.Operations:hover, .Equalation:hover, .Numbers:hover,
-.Operations:active, .Equalation:active, .Numbers:active {
+.Operations:hover, .Numbers:hover, .Actions:hover,
+.Operations:active, .Numbers:active, .Actions:active {
     background-color: var(--color-golden);
     cursor: pointer;
     font-size: calc(var(--fontRatio-flexi) * 0.45);
 }
 
 @media screen and (min-width: 372px) {
-    .Operations, .Equalation, .Numbers {
+    .Operations, .Numbers, .Actions {
         font-size: calc(var(--fontRatio-fixed) * 0.3);
     }
 
-    .Operations:hover, .Equalation:hover, .Numbers:hover,
-    .Operations:active, .Equalation:active, .Numbers:active {
+    .Operations:hover, .Numbers:hover, .Actions:hover,
+    .Operations:active, .Numbers:active, .Actions:active {
         font-size: calc(var(--fontRatio-fixed) * 0.45);
     }
 }
 
-.Operations {
+.Operations, .Actions {
     background-color: var(--color-deepBlue);
-    color: var(--color-whitey);
-}
-
-.Equalation {
-    background-color: var(--color-blackBlue);
     color: var(--color-whitey);
 }
 
@@ -175,6 +169,12 @@ button {
 
 
 /** EACH BUTTON **/
+#Equalation {
+    grid-area: equalat;
+    background-color: var(--color-blackBlue);
+    color: var(--color-whitey);
+}
+
 #Addition {
     grid-area: additio;
 }
@@ -189,10 +189,6 @@ button {
 
 #Division {
     grid-area: divisio;
-}
-
-#Equal {
-    grid-area: equalat;
 }
 
 #Zero {

@@ -14,8 +14,9 @@
     <main>
       <div id="theGrid">
         <!-- <form id="display" oninput="outpt.value=compute(inpt.value)"> -->
-        <form id="display" oninput="outpt.value=inpt.value">
-          <input type="text" name="inpt" value="(56+97)*63-12000.78">
+        <!-- <form id="display" oninput="outpt.value=inpt.value"> -->
+        <form id="display">
+          <input type="text" name="inpt" value="23">
           <output for="inpt" name="outpt"> 0 </output>
         </form>
 
@@ -23,12 +24,11 @@
         <button class="Operations" id="Subtraction"> - </button>
         <button class="Operations" id="Multiplication"> &times; </button>
         <button class="Operations" id="Division"> &divide; </button>
-        <button class="Operations" id="Floating"> . </button>
-        <button class="Operations" id="Clear"> C </button>
-        <button class="Operations" id="Erase"> &#9003; </button>
-
-        <button class="Equalation" id="Equal"> = </button>
-
+        
+        <button class="Actions" id="Clear"> C </button>
+        <button class="Actions" id="Erase"> &#9003; </button>
+        <button class="Actions" id="Equalation"> = </button>
+        
         <button class="Numbers" id="Zero"> 0 </button>
         <button class="Numbers" id="One"> 1 </button>
         <button class="Numbers" id="Two"> 2 </button>
@@ -39,6 +39,7 @@
         <button class="Numbers" id="Seven"> 7 </button>
         <button class="Numbers" id="Eight"> 8 </button>
         <button class="Numbers" id="Nine"> 9 </button>
+        <button class="Numbers" id="Floating"> . </button>
       </div>
     </main>
 
