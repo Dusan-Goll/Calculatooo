@@ -26,7 +26,7 @@ class Marks {
 
 class Calculator {
     constructor() {
-        this.operators = ['×', '÷', '-', '+'];
+        this.operators = ['-', '×', '÷', '+'];
     }
 
     /** input checking methods **/
@@ -116,8 +116,12 @@ class Calculator {
             while (expr.includes(theOperator)) {
                 let pos = expr.indexOf(theOperator),
                     negativeNum = -(expr[(pos + 1)]);
-    
-                expr.splice(pos, 2, '+', negativeNum);
+
+                if (pos === 0) {
+                    expr.splice(pos, 2, negativeNum);
+                } else {
+                    expr.splice(pos, 2, '+', negativeNum);
+                }
             }
         } else {
             while (expr.includes(theOperator)) {
@@ -170,6 +174,7 @@ class Button {
                 inputEl.value = '';
             } else if (this.innerHTML === '=') {
                 outputEl.value = calculatooo.compute(inputEl.value);
+                inputEl.value = '';
             } else {
                 let displayedText = inputEl.value,
                     pressedSign = this.innerHTML;
