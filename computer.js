@@ -1,6 +1,7 @@
 'use strict'
 
 class Calculator {
+
     constructor() {
         this.input = document.querySelector('input');
         this.output = document.querySelector('output');
@@ -12,46 +13,65 @@ class Calculator {
         this.numbers = this.getNumbers();
         this.operations = this.getOperations();
     }
+
     NLtoArr(nodeList) {
         return Array.prototype.slice.call(nodeList);
     }
+
     getAllButtons() {
         return this.NLtoArr(
             document.querySelectorAll('button')
         );
     }
+
     getNumbers() {
         return this.NLtoArr(document.getElementsByClassName('Numbers'));
     }
+
     getOperations() {
         return this.NLtoArr(document.getElementsByClassName('Operations'));
     }
-    /* addSignOf(button) {
-        this.input.value += button.textContent;
+
+    display(pressedButton) {
+        let pressedSign = pressedButton.innerHTML;
+
+        if (this.checkInput(pressedSign)) {
+            this.input.value += pressedSign;
+        }
     };
-    press(button) {
-        button.addEventListener('click', this.addSignOf);
-    } */
+
+    checkInput(sign) {
+
+        let text = this.input.value;
+        
+        if (text === '' && !/[0-9]|\-/.test(sign)) {
+            return false;
+
+        /*** zde pridat serii dalsich checku ***/
+        
+        } else return true;
+    }
 }
 
 
-// Chtelo by to funkci, co bude pri mackani buttonu kalkulacky
-// kontrolovat, zda-li prvni znak je cislo, nebo neco jineho
-// a v pripade ze nebude cislo, tak opravit input.
-// A taky kdyz uzivatel zmackne vicekrat napr. 'plus', tak to
-// prida do inputu (a zobrazi) jen to puvodni 'plus'.
-
-let someString = '850+63×12-30÷5+78-3×2÷2+140';
-
-
-/*** input string handling ***/
-// object-oriented -> transfer arguments to object properties
-
-
 class Computer extends Calculator {
+
     constructor() {
         super();
         this.sings = ['×', '÷', '-', '+'];
+    }
+
+    eraseSign() {
+        this.input.value = this.input.value.slice(0, -1);
+    }
+
+    clearAll() {
+        this.input.value = '';
+    }
+
+    getResult() {
+        this.output.value = this.compute();
+        this.input.value  = this.output.value;
     }
     
     compute() {
@@ -73,18 +93,22 @@ class Computer extends Calculator {
             tempNum = null;
         
         for (let i = 0; i < strng.length; i++) {
-            if (/[0-9]/.test(strng[i])) {
+            if (/[0-9]|\./.test(strng[i])) {
                 (tempNum === null)? tempNum = strng[i] : tempNum += strng[i];
+                
                 if (i === (strng.length - 1)) {
                     mathExpre.push(+tempNum);
                 }
             } else {
                 if (tempNum !== null) {
                     mathExpre.push(+tempNum);
+                    tempNum = null;
                 }
-                tempNum = null;
-                if (/\+|\u{2d}|\u{d7}|\u{f7}/u.test(strng[i])) {
-                    mathExpre.push(strng[i]);
+
+                if (/\+|\-|\×|\÷/.test(strng[i])) {
+                    if (i !== (strng.length - 1)) {
+                        mathExpre.push(strng[i]);
+                    }
                 }
             }
         }
@@ -99,9 +123,7 @@ class Computer extends Calculator {
                 let pos = expr.indexOf(sign),
                     negativeNum = -(expr[(pos + 1)]);
 
-                console.log('pred:', expr);
                 expr.splice(pos, 2, '+', negativeNum);
-                console.log('po', expr);
             }
         } else {
             while (expr.includes(sign)) {
@@ -114,9 +136,8 @@ class Computer extends Calculator {
                 } else if (sign === '+') {
                     tempResult = expr[pos - 1] + expr[pos + 1];
                 }
-                console.log('pred', expr);
+
                 expr.splice((pos - 1), 3, tempResult);
-                console.log('po', expr);
             }
         }
         return expr;
@@ -131,10 +152,3 @@ class Computer extends Calculator {
 
 
 let calculatooo = new Computer();
-
-calculatooo.equalate.addEventListener(
-    'click', function() {
-        calculatooo.output.value = calculatooo.compute();
-        calculatooo.input.value  = calculatooo.output.value;
-    }
-)
