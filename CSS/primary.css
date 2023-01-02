@@ -169,25 +169,25 @@ button {
 
 
 /** EACH BUTTON **/
-#Equalation {
+#Equal {
     grid-area: equalat;
     background-color: var(--color-blackBlue);
     color: var(--color-whitey);
 }
 
-#Addition {
+#Plus {
     grid-area: additio;
 }
 
-#Subtraction {
+#Minus{
     grid-area: subtrac;
 }
 
-#Multiplication {
+#Multi {
     grid-area: multipl;
 }
 
-#Division {
+#Divide {
     grid-area: divisio;
 }
 
@@ -231,7 +231,7 @@ button {
     grid-area: nineeee;
 }
 
-#Floating {
+#Float {
     grid-area: floatin;
 }
 

@@ -1,85 +1,79 @@
 'use strict'
 
-class Calculator {
-
+class Marks {
     constructor() {
-        this.input = document.querySelector('input');
-        this.output = document.querySelector('output');
-        this.equalate = document.getElementById('Equalation');
-        this.clear = document.getElementById('Clear');
-        this.erase = document.getElementById('Erase');
-
-        this.allButtons = this.getAllButtons();
-        this.numbers = this.getNumbers();
-        this.operations = this.getOperations();
-    }
-
-    NLtoArr(nodeList) {
-        return Array.prototype.slice.call(nodeList);
-    }
-
-    getAllButtons() {
-        return this.NLtoArr(
-            document.querySelectorAll('button')
-        );
-    }
-
-    getNumbers() {
-        return this.NLtoArr(document.getElementsByClassName('Numbers'));
-    }
-
-    getOperations() {
-        return this.NLtoArr(document.getElementsByClassName('Operations'));
-    }
-
-    display(pressedButton) {
-        let pressedSign = pressedButton.innerHTML;
-
-        if (this.checkInput(pressedSign)) {
-            this.input.value += pressedSign;
-        }
-    };
-
-    checkInput(sign) {
-
-        let text = this.input.value;
-        
-        if (text === '' && !/[0-9]|\-/.test(sign)) {
-            return false;
-
-        /*** zde pridat serii dalsich checku ***/
-        
-        } else return true;
+        this['⌫'] = { id: 'Erase'   , class: 'Actions' };
+        this['C'] =  { id: 'Clear'   , class: 'Actions' };
+        this['='] =  { id: 'Equal'   , class: 'Actions' };
+        this['1'] =  { id: 'One'     , class: 'Numbers' };
+        this['2'] =  { id: 'Two'     , class: 'Numbers' };
+        this['3'] =  { id: 'Three'   , class: 'Numbers' };
+        this['4'] =  { id: 'Four'    , class: 'Numbers' };
+        this['5'] =  { id: 'Five'    , class: 'Numbers' };
+        this['6'] =  { id: 'Six'     , class: 'Numbers' };
+        this['7'] =  { id: 'Seven'   , class: 'Numbers' };
+        this['8'] =  { id: 'Eight'   , class: 'Numbers' };
+        this['9'] =  { id: 'Nine'    , class: 'Numbers' };
+        this['0'] =  { id: 'Zero'    , class: 'Numbers' };
+        this['.'] =  { id: 'Float'   , class: 'Numbers' };
+        this['+'] =  { id: 'Plus'    , class: 'Operations' };
+        this['-'] =  { id: 'Minus'   , class: 'Operations' };
+        this['×'] =  { id: 'Multi'   , class: 'Operations' };
+        this['÷'] =  { id: 'Divide'  , class: 'Operations' };
     }
 }
 
 
-class Computer extends Calculator {
-
+class Calculator {
     constructor() {
-        super();
-        this.sings = ['×', '÷', '-', '+'];
+        this.operators = ['×', '÷', '-', '+'];
     }
 
-    eraseSign() {
-        this.input.value = this.input.value.slice(0, -1);
+    /** input checking methods **/
+
+    isCollisionBetween(strng, sign) {
+        return (this.checkFirstSign(strng, sign) ||
+                this.checkZero(strng, sign) ||
+                this.checkOperators(strng, sign) ||
+                this.checkFloats(strng, sign)
+        );
     }
 
-    clearAll() {
-        this.input.value = '';
-    }
-
-    getResult() {
-        this.output.value = this.compute();
-        this.input.value  = this.output.value;
+    checkFirstSign(str, theSign) {
+        return str === '' && /\+|\×|\÷|\./.test(theSign);
     }
     
-    compute() {
-        let expression = this.convertToExpr(this.input.value);
+    checkZero(str, theSign) {
+        return (/[0-9]/.test(theSign) &&
+                (str === '0' ||
+                 str.at(-1) === '0' && /\+|\-|\×|\÷/.test(str.at(-2))
+                )
+        );
+    }
+
+    checkOperators(str, theSign) {
+        return /\+|\-|\×|\÷|\./.test(str.at(-1)) &&
+               /\+|\-|\×|\÷|\./.test(theSign);
+    }
+
+    checkFloats(str, theSign) {
+        if (theSign !== '.') {
+            return false;
+        } else {
+            let lastDot = str.lastIndexOf('.');
+            return str.includes('.') &&
+                   /^[0-9]+$/g.test(str.slice(lastDot + 1, ));
+        }
+    }
+
+    /** computing methods **/
+
+    compute(inputedString) {
+        let expression = this.convertToExpr(inputedString);
     
-        for (let sign of this.sings) {
-            while (expression.includes(sign)) {
-                expression = this.computePartOf(expression, sign);
+        for (let operator of this.operators) {
+            while (expression.includes(operator)) {
+                expression = this.computePartOf(expression, operator);
             }
         }
         
@@ -87,7 +81,7 @@ class Computer extends Calculator {
             this.throwError();
         } else return expression[0];
     }
-
+    
     convertToExpr(strng) {
         let mathExpre = new Array(),
             tempNum = null;
@@ -104,7 +98,7 @@ class Computer extends Calculator {
                     mathExpre.push(+tempNum);
                     tempNum = null;
                 }
-
+    
                 if (/\+|\-|\×|\÷/.test(strng[i])) {
                     if (i !== (strng.length - 1)) {
                         mathExpre.push(strng[i]);
@@ -114,35 +108,35 @@ class Computer extends Calculator {
         }
         return mathExpre;
     }
-
-    computePartOf(expr, sign) {  // 'operator' instead 'sign'
+    
+    computePartOf(expr, theOperator) {
         let tempResult;
         
-        if (sign === '-') {
-            while (expr.includes(sign)) {
-                let pos = expr.indexOf(sign),
+        if (theOperator === '-') {
+            while (expr.includes(theOperator)) {
+                let pos = expr.indexOf(theOperator),
                     negativeNum = -(expr[(pos + 1)]);
-
+    
                 expr.splice(pos, 2, '+', negativeNum);
             }
         } else {
-            while (expr.includes(sign)) {
-                let pos = expr.indexOf(sign);
+            while (expr.includes(theOperator)) {
+                let pos = expr.indexOf(theOperator);
             
-                if (sign === '×') {
+                if (theOperator === '×') {
                     tempResult = expr[pos - 1] * expr[pos + 1];
-                } else if (sign === '÷') {
+                } else if (theOperator === '÷') {
                     tempResult = expr[pos - 1] / expr[pos + 1]; 
-                } else if (sign === '+') {
+                } else if (theOperator === '+') {
                     tempResult = expr[pos - 1] + expr[pos + 1];
                 }
-
+    
                 expr.splice((pos - 1), 3, tempResult);
             }
         }
         return expr;
     }
-
+    
     throwError() {
         throw console.error(
                 'Array has either none or more than one item.'
@@ -151,4 +145,48 @@ class Computer extends Calculator {
 }
 
 
-let calculatooo = new Computer();
+class Button {
+    constructor(text, className, id) {
+        this.node = document.createElement('button');
+        this.parent = document.getElementById('theGrid');
+
+        this.node.innerHTML = text;
+        this.node.className = className;
+        this.node.id = id;
+
+        this.parent.appendChild(this.node);
+
+        this.node.addEventListener('click', function() {
+            let inputEl = this.parentElement
+                              .firstElementChild
+                              .firstElementChild,
+                outputEl = this.parentElement
+                               .firstElementChild
+                               .lastElementChild;
+            
+            if (this.innerHTML === '⌫') {
+                inputEl.value = inputEl.value.slice(0, -1);
+            } else if (this.innerHTML === 'C') {
+                inputEl.value = '';
+            } else if (this.innerHTML === '=') {
+                outputEl.value = calculatooo.compute(inputEl.value);
+            } else {
+                let displayedText = inputEl.value,
+                    pressedSign = this.innerHTML;
+
+                if (!calculatooo.isCollisionBetween(displayedText, pressedSign)) {
+                    inputEl.value += this.innerHTML;
+                }
+            }
+        });
+    }
+}
+
+
+let calculatooo = new Calculator();
+let marks = new Marks();
+let buttons = new Object();
+
+for (let mark in marks) {
+    buttons[mark] = new Button( mark, marks[mark].class, marks[mark].id );
+}
