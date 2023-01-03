@@ -86,12 +86,13 @@ main {
     align-items: center;
 }
 
-input, output {
+#input, #output {
     background-color: inherit;
     height: calc(100% * var(--input-height));
     width: 98%;
     padding: 0;
     padding-right: 2%;
+    margin: 0;
     border: none;
     text-align: right;
 
@@ -101,29 +102,44 @@ input, output {
         calc(
             var(--fontRatio-flexi) *
             var(--input-height) *
-            0.8);
+            0.6);
+    
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-color: #5b5b5b #ccbebe ;
 }
 
-input {
-    overflow: auto;
+#input {
     font-weight: bold;
 }
 
-output {
-    overflow: auto;
+#input::-webkit-scrollbar,
+#output::-webkit-scrollbar {
+    height: 10px;
 }
 
-input:focus {
+#input::-webkit-scrollbar-thumb,
+#output::-webkit-scrollbar-thumb {
+    background: #5b5b5b;
+}
+
+#input::-webkit-scrollbar-track,
+#output::-webkit-scrollbar-track {
+    background-color: #ccbebe;
+}
+
+#input:focus {
     outline: none;
 }
 
 @media screen and (min-width: 372px) { /* (--maxiW * 1.2) */
-    input, output {
+    #input, #output {
         font-size:
             calc(
                 var(--fontRatio-fixed) *
                 var(--input-height) *
-                0.8);
+                0.6);
     }
 }
 

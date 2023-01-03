@@ -169,19 +169,19 @@ class Button {
                                .lastElementChild;
             
             if (this.innerHTML === '⌫') {
-                inputEl.value = inputEl.value.slice(0, -1);
+                inputEl.innerHTML = inputEl.innerHTML.slice(0, -1);
             } else if (this.innerHTML === 'C') {
-                inputEl.value = '';
-                outputEl.value = '';
+                inputEl.innerHTML = '';
+                outputEl.innerHTML = '';
             } else if (this.innerHTML === '=') {
-                outputEl.value = inputEl.value;
-                inputEl.value = calculatooo.compute(inputEl.value);
+                outputEl.innerHTML = inputEl.innerHTML;
+                inputEl.innerHTML = calculatooo.compute(inputEl.innerHTML);
             } else {
-                let displayedText = inputEl.value,
+                let displayedText = inputEl.innerHTML,
                     pressedSign = this.innerHTML;
 
                 if (!calculatooo.isCollisionBetween(displayedText, pressedSign)) {
-                    inputEl.value += this.innerHTML;
+                    inputEl.innerHTML += this.innerHTML;
                 }
             }
         });
