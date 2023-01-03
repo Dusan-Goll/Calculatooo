@@ -90,6 +90,7 @@ main {
     background-color: inherit;
     height: calc(100% * var(--input-height));
     width: 98%;
+    max-width: calc(var(--maxiW) * 0.9);
     padding: 0;
     padding-right: 2%;
     margin: 0;
