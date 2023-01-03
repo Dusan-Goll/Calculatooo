@@ -105,12 +105,12 @@ input, output {
 }
 
 input {
-    overflow: hidden
+    overflow: auto;
+    font-weight: bold;
 }
 
 output {
-    font-weight: bold;
-    overflow: hidden;
+    overflow: auto;
 }
 
 input:focus {
