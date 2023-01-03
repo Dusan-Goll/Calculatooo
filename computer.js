@@ -172,9 +172,10 @@ class Button {
                 inputEl.value = inputEl.value.slice(0, -1);
             } else if (this.innerHTML === 'C') {
                 inputEl.value = '';
+                outputEl.value = '';
             } else if (this.innerHTML === '=') {
-                outputEl.value = calculatooo.compute(inputEl.value);
-                inputEl.value = '';
+                outputEl.value = inputEl.value;
+                inputEl.value = calculatooo.compute(inputEl.value);
             } else {
                 let displayedText = inputEl.value,
                     pressedSign = this.innerHTML;
