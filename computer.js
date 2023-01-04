@@ -170,6 +170,7 @@ class Button {
             
             if (this.innerHTML === '⌫') {
                 inputEl.innerHTML = inputEl.innerHTML.slice(0, -1);
+                inputEl.scrollLeft += 1000;
             } else if (this.innerHTML === 'C') {
                 inputEl.innerHTML = '';
                 outputEl.innerHTML = '';
@@ -182,6 +183,7 @@ class Button {
 
                 if (!calculatooo.isCollisionBetween(displayedText, pressedSign)) {
                     inputEl.innerHTML += this.innerHTML;
+                    inputEl.scrollLeft += 1000;
                 }
             }
         });
