@@ -168,8 +168,7 @@ button {
     font-weight: bold;
     font-size: calc(var(--fontRatio-flexi) * 0.3);
 }
-    
-.Operations:hover, .Numbers:hover, .Actions:hover,
+
 .Operations:active, .Numbers:active, .Actions:active {
     background-color: var(--color-golden);
     cursor: pointer;
@@ -184,6 +183,16 @@ button {
     .Operations:hover, .Numbers:hover, .Actions:hover,
     .Operations:active, .Numbers:active, .Actions:active {
         font-size: calc(var(--fontRatio-fixed) * 0.45);
+    }
+
+    .Operations:hover, .Numbers:hover, .Actions:hover {
+        background-color: var(--color-yellowa);
+        cursor: pointer;
+    }
+
+    .Operations:active, .Numbers:active, .Actions:active {
+        background-color: var(--color-golden);
+        cursor: pointer;
     }
 }
 
