@@ -109,6 +109,7 @@ main {
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-color: #5b5b5b #ccbebe ;
+    scrollbar-width: thin;
 }
 
 #input {
@@ -141,6 +142,13 @@ main {
                 var(--fontRatio-fixed) *
                 var(--input-height) *
                 0.6);
+    }
+}
+
+@media screen and (max-width: 372px) {
+    #input::-webkit-scrollbar,
+    #output::-webkit-scrollbar {
+        height: 5px;
     }
 }
 
