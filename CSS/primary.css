@@ -150,6 +150,10 @@ main {
     #output::-webkit-scrollbar {
         height: 5px;
     }
+
+    #display {
+        max-width: 100%;
+    }
 }
 
 
