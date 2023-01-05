@@ -165,17 +165,17 @@ button:active {
         font-size: calc(var(--fontRatio-fixed) * 0.3);
     }
 
-    button:hover, button:active {
+    button:active {
         font-size: calc(var(--fontRatio-fixed) * 0.45);
-    }
-
-    button:hover {
-        background-color: var(--color-yellowa);
+        background-color: var(--color-golden);
         cursor: pointer;
     }
+}
 
-    button:active {
-        background-color: var(--color-golden);
+@media (hover: hover) {
+    button:hover {
+        font-size: calc(var(--fontRatio-fixed) * 0.45);
+        background-color: var(--color-yellowa);
         cursor: pointer;
     }
 }
