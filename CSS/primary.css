@@ -155,20 +155,14 @@ button {
 }
 
 button:active {
+    font-size: calc(var(--fontRatio-flexi) * 0.45);
     background-color: var(--color-golden);
     cursor: pointer;
-    font-size: calc(var(--fontRatio-flexi) * 0.45);
 }
 
 @media screen and (min-width: 372px) {
     button {
         font-size: calc(var(--fontRatio-fixed) * 0.3);
-    }
-
-    button:active {
-        font-size: calc(var(--fontRatio-fixed) * 0.45);
-        background-color: var(--color-golden);
-        cursor: pointer;
     }
 }
 
@@ -176,6 +170,12 @@ button:active {
     button:hover {
         font-size: calc(var(--fontRatio-fixed) * 0.45);
         background-color: var(--color-yellowa);
+        cursor: pointer;
+    }
+
+    button:active {
+        font-size: calc(var(--fontRatio-fixed) * 0.45);
+        background-color: var(--color-golden);
         cursor: pointer;
     }
 }
@@ -199,6 +199,16 @@ button:active {
 
 #Equal:active {
     background-color: var(--color-golden);
+}
+
+@media (hover: hover) {
+    #Equal:hover {
+        background-color: var(--color-yellowa);
+    }
+
+    #Equal:active {
+        background-color: var(--color-golden);
+    }
 }
 
 #Plus {
