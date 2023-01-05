@@ -197,6 +197,10 @@ button:active {
     color: var(--color-whitey);
 }
 
+#Equal:active {
+    background-color: var(--color-golden);
+}
+
 #Plus {
     grid-area: additio;
 }
@@ -277,6 +281,14 @@ button:active {
 
     #Erase:hover, #Erase:active {
         font-size: calc(var(--fontRatio-fixed) * 0.35);
+    }
+
+    #Equal:hover {
+        background-color: var(--color-yellowa);
+    }
+
+    #Equal:active {
+        background-color: var(--color-golden);
     }
 }
 
