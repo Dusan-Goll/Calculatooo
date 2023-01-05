@@ -81,6 +81,7 @@ main {
 #display {
     grid-area: display;
     min-height: calc(100% * var(--display-height));
+    max-width: 100%;
     background-color: var(--color-black);
     display: flex;
     flex-direction: column;
@@ -129,10 +130,6 @@ main {
     background-color: #ccbebe;
 }
 
-#input:focus {
-    outline: none;
-}
-
 @media screen and (min-width: 372px) { /* (--maxiW * 1.2) */
     .Expositions {
         font-size:
@@ -146,10 +143,6 @@ main {
 @media screen and (max-width: 372px) {
     .Expositions::-webkit-scrollbar {
         height: 5px;
-    }
-
-    #display {
-        max-width: 100%;
     }
 }
 
