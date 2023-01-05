@@ -75,6 +75,7 @@ main {
         "zeroooo floatin clearrr eraseee";
 }
 
+
 /** BLACK DISPLAY **/
 
 #display {
@@ -86,8 +87,7 @@ main {
     align-items: center;
 }
 
-#input, #output {
-    background-color: inherit;
+.Expositions {
     height: calc(100% * var(--input-height));
     width: 98%;
     max-width: calc(var(--maxiW) * 0.9);
@@ -95,9 +95,10 @@ main {
     padding-right: 2%;
     margin: 0;
     border: none;
-    text-align: right;
-
+    
+    background-color: inherit;
     color: #ECF0F1;
+    text-align: right;
     font-family: var(--fontHouse-mono);
     font-size:
         calc(
@@ -116,18 +117,15 @@ main {
     font-weight: bold;
 }
 
-#input::-webkit-scrollbar,
-#output::-webkit-scrollbar {
+.Expositions::-webkit-scrollbar {
     height: 10px;
 }
 
-#input::-webkit-scrollbar-thumb,
-#output::-webkit-scrollbar-thumb {
+.Expositions::-webkit-scrollbar-thumb {
     background: #5b5b5b;
 }
 
-#input::-webkit-scrollbar-track,
-#output::-webkit-scrollbar-track {
+.Expositions::-webkit-scrollbar-track {
     background-color: #ccbebe;
 }
 
@@ -136,7 +134,7 @@ main {
 }
 
 @media screen and (min-width: 372px) { /* (--maxiW * 1.2) */
-    #input, #output {
+    .Expositions {
         font-size:
             calc(
                 var(--fontRatio-fixed) *
@@ -146,8 +144,7 @@ main {
 }
 
 @media screen and (max-width: 372px) {
-    #input::-webkit-scrollbar,
-    #output::-webkit-scrollbar {
+    .Expositions::-webkit-scrollbar {
         height: 5px;
     }
 
