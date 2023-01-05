@@ -119,7 +119,7 @@ main {
 }
 
 .Expositions::-webkit-scrollbar {
-    height: 10px;
+    height: 5px;
 }
 
 .Expositions::-webkit-scrollbar-thumb {
@@ -137,12 +137,10 @@ main {
                 var(--fontRatio-fixed) *
                 var(--input-height) *
                 0.6);
-    }
-}
+            }
 
-@media screen and (max-width: 372px) {
     .Expositions::-webkit-scrollbar {
-        height: 5px;
+        height: 10px;
     }
 }
 
