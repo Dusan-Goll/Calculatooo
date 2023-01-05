@@ -145,40 +145,36 @@ main {
 }
 
 
-/** CLASSES OF BUTTONS **/
+/** BUTTONS **/
 
 button {
     border: none;
-}
-
-.Operations, .Numbers {
     font-family: var(--fontHouse-mono);
     font-weight: bold;
     font-size: calc(var(--fontRatio-flexi) * 0.3);
 }
 
-.Operations:active, .Numbers:active {
+button:active {
     background-color: var(--color-golden);
     cursor: pointer;
     font-size: calc(var(--fontRatio-flexi) * 0.45);
 }
 
 @media screen and (min-width: 372px) {
-    .Operations, .Numbers {
+    button {
         font-size: calc(var(--fontRatio-fixed) * 0.3);
     }
 
-    .Operations:hover, .Numbers:hover,
-    .Operations:active, .Numbers:active {
+    button:hover, button:active {
         font-size: calc(var(--fontRatio-fixed) * 0.45);
     }
 
-    .Operations:hover, .Numbers:hover {
+    button:hover {
         background-color: var(--color-yellowa);
         cursor: pointer;
     }
 
-    .Operations:active, .Numbers:active {
+    button:active {
         background-color: var(--color-golden);
         cursor: pointer;
     }
