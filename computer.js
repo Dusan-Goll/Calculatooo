@@ -2,9 +2,13 @@
 
 class Marks {
     constructor() {
-        this['⌫'] = { id: 'Erase'   , class: 'Actions' };
-        this['C'] =  { id: 'Clear'   , class: 'Actions' };
-        this['='] =  { id: 'Equal'   , class: 'Actions' };
+        this['⌫'] = { id: 'Erase'   , class: 'Operations' };
+        this['C'] =  { id: 'Clear'   , class: 'Operations' };
+        this['='] =  { id: 'Equal'   , class: 'Operations' };
+        this['+'] =  { id: 'Plus'    , class: 'Operations' };
+        this['-'] =  { id: 'Minus'   , class: 'Operations' };
+        this['×'] =  { id: 'Multi'   , class: 'Operations' };
+        this['÷'] =  { id: 'Divide'  , class: 'Operations' };
         this['1'] =  { id: 'One'     , class: 'Numbers' };
         this['2'] =  { id: 'Two'     , class: 'Numbers' };
         this['3'] =  { id: 'Three'   , class: 'Numbers' };
@@ -16,10 +20,6 @@ class Marks {
         this['9'] =  { id: 'Nine'    , class: 'Numbers' };
         this['0'] =  { id: 'Zero'    , class: 'Numbers' };
         this['.'] =  { id: 'Float'   , class: 'Numbers' };
-        this['+'] =  { id: 'Plus'    , class: 'Operations' };
-        this['-'] =  { id: 'Minus'   , class: 'Operations' };
-        this['×'] =  { id: 'Multi'   , class: 'Operations' };
-        this['÷'] =  { id: 'Divide'  , class: 'Operations' };
     }
 }
 
