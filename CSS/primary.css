@@ -154,9 +154,11 @@ button {
     font-size: calc(var(--fontRatio-flexi) * 0.4);
 }
 
-button:active {
-    filter: hue-rotate(200deg) saturate(35);
-    border: 2px solid var(--color-black);
+@media (hover: none) {
+    button:active {
+        filter: hue-rotate(200deg) saturate(35);
+        border: 2px solid var(--color-black);
+    }
 }
 
 @media screen and (min-width: 372px) {
@@ -169,6 +171,10 @@ button:active {
     button:hover {
         background-color: var(--color-yellowa);
         cursor: pointer;
+    }
+
+    button:active {
+        background-color: var(--color-golden);
     }
 }
 
@@ -189,15 +195,21 @@ button:active {
     color: var(--color-whitey);
 }
 
-#Equal:active {
-    filter: hue-rotate(206deg) brightness(2.0) saturate(20);
-    border: 2px solid var(--color-black);
+@media (hover: none) {
+    #Equal:active {
+        filter: hue-rotate(206deg) brightness(2.0) saturate(20);
+        border: 2px solid var(--color-black);
+    }
 }
 
 @media (hover: hover) {
     #Equal:hover {
         background-color: var(--color-yellowa);
         cursor: pointer;
+    }
+    
+    #Equal:active {
+        background-color: var(--color-golden);
     }
 }
 
