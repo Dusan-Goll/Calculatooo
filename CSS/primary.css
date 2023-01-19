@@ -270,28 +270,8 @@ button:active {
     font-size: calc(var(--fontRatio-flexi) * 0.2);
 }
 
-#Erase:active {
-    font-size: calc(var(--fontRatio-flexi) * 0.35);
-}
-
 @media screen and (min-width: 372px) {
     #Erase {
         font-size: calc(var(--fontRatio-fixed) * 0.2);
-    }
-
-    #Erase:active {
-        font-size: calc(var(--fontRatio-fixed) * 0.35);
-    }
-}
-
-@media screen and (max-width: 200px) {
-    #Erase:active {
-        font-size: calc(var(--fontRatio-flexi) * 0.25);
-    }
-}
-
-@media (hover: hover) and (min-width: 372px) {
-    #Erase:hover {
-        font-size: calc(var(--fontRatio-fixed) * 0.35);
     }
 }
