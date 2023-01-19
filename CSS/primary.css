@@ -197,7 +197,7 @@ button:active {
     color: var(--color-whitey);
 }
 
-#Equal:active {
+/* #Equal:active {
     background-color: var(--color-golden);
 }
 
@@ -209,7 +209,7 @@ button:active {
     #Equal:active {
         background-color: var(--color-golden);
     }
-}
+} */
 
 #Plus {
     grid-area: additio;
