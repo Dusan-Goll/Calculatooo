@@ -155,9 +155,8 @@ button {
 }
 
 button:active {
-    font-size: calc(var(--fontRatio-flexi) * 0.45);
-    background-color: var(--color-golden);
-    cursor: pointer;
+    filter: brightness(1.2);
+    border: 2px solid var(--color-black);
 }
 
 @media screen and (min-width: 372px) {
@@ -168,14 +167,7 @@ button:active {
 
 @media (hover: hover) {
     button:hover {
-        font-size: calc(var(--fontRatio-fixed) * 0.45);
         background-color: var(--color-yellowa);
-        cursor: pointer;
-    }
-
-    button:active {
-        font-size: calc(var(--fontRatio-fixed) * 0.45);
-        background-color: var(--color-golden);
         cursor: pointer;
     }
 }
@@ -197,19 +189,17 @@ button:active {
     color: var(--color-whitey);
 }
 
-/* #Equal:active {
-    background-color: var(--color-golden);
+#Equal:active {
+    filter: brightness(1.2);
+    border: 2px solid var(--color-black);
 }
 
 @media (hover: hover) {
     #Equal:hover {
         background-color: var(--color-yellowa);
+        cursor: pointer;
     }
-
-    #Equal:active {
-        background-color: var(--color-golden);
-    }
-} */
+}
 
 #Plus {
     grid-area: additio;
