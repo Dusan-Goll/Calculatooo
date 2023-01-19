@@ -151,7 +151,7 @@ button {
     border: none;
     font-family: var(--fontHouse-mono);
     font-weight: bold;
-    font-size: calc(var(--fontRatio-flexi) * 0.3);
+    font-size: calc(var(--fontRatio-flexi) * 0.4);
 }
 
 button:active {
@@ -161,7 +161,7 @@ button:active {
 
 @media screen and (min-width: 372px) {
     button {
-        font-size: calc(var(--fontRatio-fixed) * 0.3);
+        font-size: calc(var(--fontRatio-fixed) * 0.4);
     }
 }
 
@@ -267,11 +267,11 @@ button:active {
 
 #Erase {
     grid-area: eraseee;
-    font-size: calc(var(--fontRatio-flexi) * 0.2);
+    font-size: calc(var(--fontRatio-flexi) * 0.25);
 }
 
 @media screen and (min-width: 372px) {
     #Erase {
-        font-size: calc(var(--fontRatio-fixed) * 0.2);
+        font-size: calc(var(--fontRatio-fixed) * 0.25);
     }
 }
