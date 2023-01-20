@@ -91,11 +91,11 @@ class Calculator {
                 (tempNum === null)? tempNum = strng[i] : tempNum += strng[i];
                 
                 if (i === (strng.length - 1)) {
-                    mathExpre.push(+tempNum);
+                    mathExpre.push(Number(tempNum));
                 }
             } else {
                 if (tempNum !== null) {
-                    mathExpre.push(+tempNum);
+                    mathExpre.push(Number(tempNum));
                     tempNum = null;
                 }
     
@@ -130,7 +130,11 @@ class Calculator {
                 if (theOperator === '×') {
                     tempResult = expr[pos - 1] * expr[pos + 1];
                 } else if (theOperator === '÷') {
-                    tempResult = expr[pos - 1] / expr[pos + 1]; 
+                    if (expr[pos + 1] === 0) {
+                        return ['error'];
+                    } else {
+                        tempResult = expr[pos - 1] / expr[pos + 1];
+                    } 
                 } else if (theOperator === '+') {
                     tempResult = expr[pos - 1] + expr[pos + 1];
                 }
@@ -167,23 +171,26 @@ class Button {
                 outputEl = this.parentElement
                                .firstElementChild
                                .lastElementChild;
+            let displayedText = inputEl.innerHTML;
             
-            if (this.innerHTML === '⌫') {
+            if (this.innerHTML === '⌫' && displayedText !== 'error') {
                 inputEl.innerHTML = inputEl.innerHTML.slice(0, -1);
                 inputEl.scrollLeft += 1000;
             } else if (this.innerHTML === 'C') {
                 inputEl.innerHTML = '';
                 outputEl.innerHTML = '';
-            } else if (this.innerHTML === '=') {
+            } else if (this.innerHTML === '=' && displayedText !== 'error') {
                 outputEl.innerHTML = inputEl.innerHTML;
                 inputEl.innerHTML = calculatooo.compute(inputEl.innerHTML);
-            } else {
-                let displayedText = inputEl.innerHTML,
-                    pressedSign = this.innerHTML;
+            } else {  // another button pressed 
+                let pressedSign = this.innerHTML;
 
-                if (!calculatooo.isCollisionBetween(displayedText, pressedSign)) {
-                    inputEl.innerHTML += this.innerHTML;
-                    inputEl.scrollLeft += 1000;
+                if (!calculatooo.isCollisionBetween(
+                        displayedText,
+                        pressedSign
+                    ) && displayedText !== 'error') {
+                        inputEl.innerHTML += this.innerHTML;
+                        inputEl.scrollLeft += 1000;
                 }
             }
         });
